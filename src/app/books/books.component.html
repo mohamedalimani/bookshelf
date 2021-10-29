@@ -1,0 +1,24 @@
+<button type="button" (click)="changeTheme()" class="btn btn-primary theme">change table theme</button>
+<p style="margin-left:10px;">books</p>
+<table [ngClass]="status? 'table' : 'table table-dark'"> 
+    <tbody>
+        <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>genre</th>
+            <th>author</th>
+            <th>rating</th>
+            <th>price</th>
+            <th>order</th>
+        </tr>
+    <tr>
+        <td>1</td>
+        <td>1984</td>
+        <td>novel</td>
+        <td>george orwell</td>
+        <td>8.9</td>
+        <td>13,95<span> $</span></td>
+        <td><input type="number" value="0" min="0"></td>
+    </tr>
+    </tbody>
+</table>
