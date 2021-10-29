@@ -1,5 +1,4 @@
 mongoose = require('mongoose') ;
-bookModel = require('../models/bookModel') ;
 const express = require('express') ;
 const BookModel = require('../models/bookModel');
 const booksRoute = express.Router() ;
