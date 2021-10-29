@@ -1,6 +1,7 @@
 const express = require("express") ; 
 const mongoose = require("mongoose") ;
 cors = require('cors') ;
+const path = require('path') ;
 bodyParser = require('body-parser') ;
 const app = express() ; 
 const port = 3000 ;
@@ -9,6 +10,8 @@ const booksRoute = require('./routes/api') ;
 // enable cross-origin sharing and ...
 app.use('/api',booksRoute) ;
 app.use(cors()) ; 
+app.use(express.static(path.join(__dirname,'dist/smart-bookshelf'))) ;
+app.use('/',express.static(path.join(__dirname,'dist/smart-bookshelf'))) ; 
 app.use(bodyParser.json()) ;
 app.use(bodyParser.urlencoded({
   extended:false 
