@@ -17,7 +17,10 @@ app.use(bodyParser.urlencoded({
   extended:false 
 })) ;
 
-mongoose.connect('localhost:27017/books',()=>console.log("connected successfully to database !")) ;
+mongoose.connect('mongodb://localhost:27017/books',{useNewUrlParser: true}).then(()=>{console.log('Database successfully connected')},
+error => {
+  console.log('Database could not connect:' + error) 
+}) ;
 
 const server = app.listen(3000,()=>{console.log("server is working correctly on port : "+port)}) ;
 
