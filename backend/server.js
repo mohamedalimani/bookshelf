@@ -1,6 +1,5 @@
 const express = require("express") ; 
 const mongoose = require("mongoose") ;
-cors = require('cors') ;
 const path = require('path') ;
 bodyParser = require('body-parser') ;
 const app = express() ; 
@@ -8,8 +7,12 @@ const port = 3000 ;
 const booksRoute = require('./routes/api') ;
 
 // enable cross-origin sharing and ...
+app.use(function(req,res,next){
+  res.setHeader('access-Control-Allow-Origin','http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH') ;
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+})
 app.use('/api',booksRoute) ;
-app.use(cors()) ; 
 app.use(express.static(path.join(__dirname,'dist/smart-bookshelf'))) ;
 app.use('/',express.static(path.join(__dirname,'dist/smart-bookshelf'))) ; 
 app.use(bodyParser.json()) ;

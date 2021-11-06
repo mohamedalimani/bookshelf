@@ -11,14 +11,13 @@
             <th>price</th>
             <th>order</th>
         </tr>
-    <tr>
-        <td>1</td>
-        <td>1984</td>
-        <td>novel</td>
-        <td>george orwell</td>
-        <td>8.9</td>
-        <td>13,95<span> $</span></td>
-        <td><input type="number" value="0" min="0"></td>
-    </tr>
+     <tr *ngFor="let book of books; let i = index">
+         <td>i</td>
+         <td>{{book.name}}</td>
+         <td>{{book.genre}}</td>
+         <td>{{book.author}}</td>
+         <td>{{book.rating}}</td>
+         <td>{{book.price}}</td>
+     </tr>       
     </tbody>
 </table>

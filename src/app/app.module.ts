@@ -7,6 +7,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {ServeBookShelfService} from './service/serve-book-shelf.service' ;
 
 const routes:Routes = [
   { path:'', component:BooksComponent},
@@ -24,10 +26,11 @@ const routes:Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [ServeBookShelfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
