@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs' ;
+//import { Observable } from 'rxjs' ;
 import {HttpClient, HttpHeaders} from '@angular/common/http' ; 
 
 @Injectable({
@@ -14,6 +14,10 @@ headers = new HttpHeaders().set('Content-Type','application/json') ;
   //get all books
   getBooks(){
     return this.http.get(this.backendUrl) ;
+  }
+  //get book by name 
+  getBook(name){
+    return this.http.get(this.backendUrl+'/'+name) ; 
   }
 
 }

@@ -28,6 +28,11 @@ export class BooksComponent implements OnInit {
      this.books = data ;
    }) ;
   }
+  getBook(){
+    this.apiService.getBook(name).subscribe((data=>{
+      this.books = data ; 
+    }))
+  }
 
   ngOnInit(): void {
   }

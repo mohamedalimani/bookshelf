@@ -12,12 +12,13 @@
             <th>order</th>
         </tr>
      <tr *ngFor="let book of books; let i = index">
-         <td>i</td>
+         <td>{{i+1}}</td>
          <td>{{book.name}}</td>
          <td>{{book.genre}}</td>
          <td>{{book.author}}</td>
          <td>{{book.rating}}</td>
          <td>{{book.price}}</td>
+         <td><input type="number" min="0" max="10"></td>
      </tr>       
     </tbody>
 </table>

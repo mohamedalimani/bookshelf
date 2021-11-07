@@ -3,6 +3,7 @@ const express = require('express') ;
 const BookModel = require('../models/bookModel');
 const booksRoute = express.Router() ;
 
+//show all books
 booksRoute.route('/').get((req,res)=>{
     BookModel.find((error,data)=>{
         if (error){
@@ -13,5 +14,16 @@ booksRoute.route('/').get((req,res)=>{
         }
     })
 }) ;
+
+// get one book by name
+booksRoute.route('/:name').get((req,res)=>{
+    BookModel.findById(req.params.name,(error,data)=>{
+        if (error){
+            return next(error) ; 
+        } else {
+            res.json(data)
+        }
+    })
+})
 
 module.exports = booksRoute ; 

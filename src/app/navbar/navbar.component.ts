@@ -1,7 +1,6 @@
 import { ShareColorService } from './../share-color.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +18,6 @@ export class NavbarComponent implements OnInit {
     this.subscription.unsubscribe() ;
   }
 
-//  public navbarClass$ = this.colorService.getColor().pipe(map(isLightMode => isLightMode ? 'bg-light':'bg-dark'));
 
   public ngOnInit(): void {
      this.subscription = this.colorService.getColor().subscribe(color => this.navbarNewColor = color) ;
