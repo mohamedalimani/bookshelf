@@ -16,12 +16,13 @@ booksRoute.route('/').get((req,res)=>{
 }) ;
 
 // get one book by name
-booksRoute.route('/:name').get((req,res)=>{
-    BookModel.findById(req.params.name,(error,data)=>{
+booksRoute.route('/:name').get((req,res,next)=>{
+    BookModel.find({name: req.params.name},(error,data)=>{
         if (error){
             return next(error) ; 
         } else {
-            res.json(data)
+            
+            res.json(data) ;
         }
     })
 })
