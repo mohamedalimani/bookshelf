@@ -1,7 +1,7 @@
 import { ShareColorService } from './../share-color.service';
 import {ServeBookShelfService} from '../service/serve-book-shelf.service' ; 
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -26,8 +26,8 @@ export class NavbarComponent implements OnInit {
   }
 
   //GET ONE BOOK BY NAME
-  searchBook(f){
-   this.subscription = this.serveBook.getBook(f.searchedBook).subscribe(data => {this.oneBook = data;}) ;
+ searchBook(f){
+  this.serveBook.updateBook(f.searchedBook) ;
   }
   
 }

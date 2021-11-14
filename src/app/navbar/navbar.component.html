@@ -27,7 +27,7 @@
           </li>
 
         </ul>
-        <form  method="GET" class="d-flex" #f="ngForm" (ngSubmit)="searchBook(f.value)">
+        <form method="GET" class="d-flex" #f="ngForm" (ngSubmit)="searchBook(f.value)">
           <input name="searchedBook" class="form-control me-2" type="text" placeholder="search book by name" aria-label="Search" ngModel>
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>

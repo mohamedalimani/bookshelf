@@ -27,4 +27,17 @@ booksRoute.route('/:name').get((req,res,next)=>{
     })
 })
 
+//POST ONE BOOK
+booksRoute.route('/post').post((req,res)=>{
+    var post = {
+        name   : req.params.name,
+        genre  : req.params.genre,   
+        author : req.params.author,
+        rating : req.params.rating,
+        price  : req.params.price
+    }
+    new BookModel(post).save() ;
+    
+})
+
 module.exports = booksRoute ; 
