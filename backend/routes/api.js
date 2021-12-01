@@ -1,5 +1,6 @@
 mongoose = require('mongoose') ;
 const express = require('express') ;
+const bookModel = require('../models/bookModel');
 const BookModel = require('../models/bookModel');
 const booksRoute = express.Router() ;
 
@@ -15,7 +16,7 @@ booksRoute.route('/').get((req,res)=>{
     })
 }) ;
 
-// get one book by name
+//get one book by name
 booksRoute.route('/:name').get((req,res,next)=>{
     BookModel.find({name: req.params.name},(error,data)=>{
         if (error){
@@ -28,16 +29,37 @@ booksRoute.route('/:name').get((req,res,next)=>{
 })
 
 //POST ONE BOOK
-booksRoute.route('/post').post((req,res)=>{
-    var post = {
-        name   : req.params.name,
-        genre  : req.params.genre,   
-        author : req.params.author,
-        rating : req.params.rating,
-        price  : req.params.price
-    }
-    new BookModel(post).save() ;
-    
+booksRoute.route('/post').post((req,res,next)=>{
+    BookModel(req.body).save((err,x)=>{
+        if (err){console.log(err);}
+        else res.send(x);
+    }) ;
 })
+
+//EDIT ONE BOOK BY NAME
+  booksRoute.route('/edit/:name').put((req,res,next)=>{
+        BookModel.findOneAndUpdate(req.params.name,req.body,
+            {new:true},
+            (error,data)=>{
+                if (error){
+                    console.log(error); 
+                    return next(error); 
+                }else{
+                    console.log(data)
+                    res.json(data) ; 
+                    console.log('data updated successfully');
+                }
+            })
+  })
+  
+//DELETE ONE BOOK BY NAME
+booksRoute.delete('/delete/:name', (req ,res) => {
+    bookModel.findOneAndRemove({name:req.params.name}, (err, doc) => {
+        if(!err) { res.send(doc); }
+        else {console.log('Error in books Delete :' + JSON.stringify(err, undefined, 2)); }
+    });
+});
+
+
 
 module.exports = booksRoute ; 

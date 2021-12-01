@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs' ;
+import { Subject, Observable } from 'rxjs' ;
 import {HttpClient, HttpHeaders} from '@angular/common/http' ; 
 
 @Injectable({
@@ -28,6 +28,19 @@ headers = new HttpHeaders().set('Content-Type','application/json') ;
   }
   getOneBook(){
     return this.notifs.asObservable() ;
+  }
+  //post book
+  postBook(data){
+    return this.http.post(this.backendUrl +'/post',data) ;
+  }
+  //edit one book by it's name
+  editBook(name, data){
+    return this.http.put(this.backendUrl +'/edit/'+name,data) ;
+  }
+  // delete one book by it's name
+  deleteBook(name){
+    console.log("u're gonna delete this book",name)
+    return this.http.delete(this.backendUrl+'/delete/'+name) ; 
   }
   
 }

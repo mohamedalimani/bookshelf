@@ -9,9 +9,15 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {ServeBookShelfService} from './service/serve-book-shelf.service';
+import { AddBookComponent } from './add-book/add-book.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { DeleteBookComponent } from './delete-book/delete-book.component';
 
 const routes:Routes = [
-  { path:'', component:BooksComponent},
+  {path:'', component:BooksComponent},
+  {path:'post',component:AddBookComponent},
+  {path:'edit',component:EditBookComponent},
+  {path:'delete',component:DeleteBookComponent},
   { path:'**',component:NotFoundComponent}
 ];
 
@@ -21,7 +27,10 @@ const routes:Routes = [
     BooksComponent,
     NotFoundComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    AddBookComponent,
+    EditBookComponent,
+    DeleteBookComponent
   ],
   imports: [
     BrowserModule,

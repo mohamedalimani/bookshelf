@@ -14,14 +14,15 @@ app.use(function(req,res,next){
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,content-type,Accept');
   next() ;
 })
-app.use(cors()) ; 
-app.use('/api',booksRoute) ;
-app.use(express.static(path.join(__dirname,'dist/smart-bookshelf'))) ;
-app.use('/',express.static(path.join(__dirname,'dist/smart-bookshelf'))) ; 
 app.use(bodyParser.json()) ;
 app.use(bodyParser.urlencoded({
   extended:false 
 })) ;
+app.use(cors()) ;    // using cors library and res.header could be wrong cuz maybe they are doing the same thing !
+app.use('/api',booksRoute) ;
+app.use(express.static(path.join(__dirname,'dist/smart-bookshelf'))) ; //two next lines could be doing the same thing !!
+app.use('/',express.static(path.join(__dirname,'dist/smart-bookshelf'))) ; 
+
 
 mongoose.connect('mongodb://localhost:27017/books',{useNewUrlParser: true}).then(()=>{console.log('Database successfully connected')},
 error => {

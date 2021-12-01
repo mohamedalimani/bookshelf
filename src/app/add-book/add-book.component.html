@@ -1,0 +1,29 @@
+<div id="bg"><div class="addme">
+<ul>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>  
+    <li>
+    <label>book's name *</label>
+    <input name="name" type="text" ngModel required>
+    </li>
+    <li>
+    <label>book's genre *</label>
+    <input name="genre" type="text" ngModel required>
+    </li>
+    <li>
+    <label>book's author *</label>
+    <input name="author" type="text" ngModel required>
+    </li>
+    <li>
+    <label>rating *</label>
+    <input name="rating" type="number" [max]="10" min="0" ngModel required>
+    </li>
+    <li>
+    <label>price *</label>
+    <input name="price" type="number"  ngModel min="0" required>
+    <input class="btn btn-primary" type="submit"/> 
+    </li>  
+</form>
+</ul>
+</div>
+</div>
+
