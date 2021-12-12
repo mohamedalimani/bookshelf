@@ -1,7 +1,7 @@
 <div style="margin:20px">
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" ngNativeValidate>
 <label>type the name of the book you want to delete </label>
-<input type="text" name="name" [(ngModel)]="f.name" required>
+<input name="name" type="text" [(ngModel)]="f.name" required>
 <input type="submit" />
 </form>
 </div>

@@ -1,4 +1,4 @@
-import { ServeBookShelfService } from 'src/app/service/serve-book-shelf.service';
+import { ServeBookShelfService } from './../service/serve-book-shelf.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

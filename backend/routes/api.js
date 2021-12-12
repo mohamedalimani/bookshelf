@@ -1,6 +1,5 @@
 mongoose = require('mongoose') ;
 const express = require('express') ;
-const bookModel = require('../models/bookModel');
 const BookModel = require('../models/bookModel');
 const booksRoute = express.Router() ;
 
@@ -54,7 +53,7 @@ booksRoute.route('/post').post((req,res,next)=>{
   
 //DELETE ONE BOOK BY NAME
 booksRoute.delete('/delete/:name', (req ,res) => {
-    bookModel.findOneAndRemove({name:req.params.name}, (err, doc) => {
+    BookModel.findOneAndRemove({name:req.params.name}, (err, doc) => {
         if(!err) { res.send(doc); }
         else {console.log('Error in books Delete :' + JSON.stringify(err, undefined, 2)); }
     });
